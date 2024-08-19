@@ -338,7 +338,7 @@ body {
         color: #004d40;
     }
     
-    select, input[type="date"], textarea, button {
+    select, input[type="date"], textarea, button,input {
         width: 100%;
         padding: 12px;
         margin-bottom: 5px;
@@ -495,16 +495,20 @@ body {
 
           <label for="dateModal">DATE :</label>
           <input type="date" id="dateModal" name="date" required>
-
+          <label for="dateModal">TOTAL H :</label>
+          <input type="text" id="heur" readonly/>
+          <label for="dateModal">NOMBRE DE PRS :</label>
+          <input type="text" id="prs" readonly/>
           <label for="destinataireModal">Destinataire :</label>
           <div class="checkbox-group">
               <label><input type="checkbox" id="person1Modal" name="destinataire" value="person1"> HICHAM</label>
               <label><input type="checkbox" id="person2Modal" name="destinataire" value="person2"> IBRAHIM</label>
           </div>
-
+          
+          
           <label for="messageModal">Message :</label>
           <textarea id="messageModal" name="message" rows="4" required></textarea>
-
+       
           <button type="button11" onclick="sendToWhatsApp()">Envoyer sur WhatsApp</button>
       </form>
   </div>
@@ -559,7 +563,9 @@ body {
         var finca = document.getElementById("fincaModal").value;
         var date = document.getElementById("dateModal").value;
         var message = document.getElementById("messageModal").value;
-
+        var prs = document.getElementById("prs").value;
+        var heur = document.getElementById("heur").value;
+        
         var phoneNumbers = [];
         if (document.getElementById("person1Modal").checked) {
             phoneNumbers.push("+212662781207"); // Numéro de téléphone pour la personne 1
@@ -568,7 +574,7 @@ body {
             phoneNumbers.push("+212663715065"); // Numéro de téléphone pour la personne 2
         }
 
-        var fullMessage = ` FINCA : *${finca}*\n\n DATE: *${date}*\n\n le nombre d'heures est correct\n\n *(${message})*`;
+        var fullMessage = ` FINCA : *${finca}*\n\n DATE: *${date}*\n\n Total H  :*${heur}*\n\n Nombre de prs: *${prs}* \n\n  le nombre d'heures est correct\n\n *(${message})*`;
 
         if (phoneNumbers.length > 0) {
             for (var i = 0; i < phoneNumbers.length; i++) {
@@ -658,7 +664,14 @@ updateDataSummary(totalHours4, totalHours5);
     function updateDataSummary(totalHours4, totalHours5) {
 
       const dataSummary = document.getElementById('dataSummary');
-      dataSummary.textContent = `Total h: ${totalHours4} H * Pointage: ${totalHours5} PRS`;
+      const heur = document.getElementById('heur');
+      const prs = document.getElementById('prs');
+
+      dataSummary.textContent = `Total H: ${totalHours4} H * Pointage: ${totalHours5} PRS`;
+      heur.value = `${totalHours4} H `;
+      prs.value = `${totalHours5} PRS `;
+      window.onload=updateDataSummary;
+
     }
 
    
@@ -726,3 +739,4 @@ updateDataSummary(totalHours4, totalHours5);
   </script>
 </body>
 </html>
+
