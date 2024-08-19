@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
   <title>RHHH F20</title>
   <style>
  /* إعدادات أساسية */
@@ -395,7 +394,7 @@ body {
         font-weight: bold;
         animation: summaryPulse 1s ease-in-out infinite;;
     } 
-    #downloadBtn {
+	   #downloadBtn {
         position: fixed;
         bottom: 20px;
         left: 20px;
@@ -417,12 +416,11 @@ body {
     #downloadBtn:hover {
         background-color: #0056b3; /* لون الخلفية عند التمرير */
     }
+
 </style>
 </head>
 <body> 
-  <button id="downloadBtn">
-    &#128190; <!-- رمز القرص الصلب، يمكنك تغييره حسب رغبتك -->
-</button>
+
     <button class="navigate-button" onclick="navigateToPage()">Go to Pointage</button>
 	<button class="navigate-button" onclick="navigateToPage1()">Les Rendement </button>
 	<button class="navigate-button" onclick="navigateToPage5()">Rndt Tract</button>
@@ -430,7 +428,10 @@ body {
 	<button class="navigate-button" onclick="navigateToPage3()">La productivite</button>
 	<button class="navigate-button" onclick="navigateToPage4()">Modifier TRC</button>
       
-    
+    <button id="downloadBtn">
+    &#128190; <!-- رمز القرص الصلب، يمكنك تغييره حسب رغبتك -->
+</button>
+
 	
   <div class="container">
   
@@ -507,28 +508,29 @@ body {
       </form>
   </div>
 </div>
-
   <script>
-    document.getElementById('downloadBtn').addEventListener('click', function () {
-    var table = document.getElementById('workHoursTable'); 
-    var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});
-    var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});
 
-    function s2ab(s) { 
-        var buf = new ArrayBuffer(s.length);
-        var view = new Uint8Array(buf);
-        for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-        return buf;    
-    }
+	   document.getElementById('downloadBtn').addEventListener('click', function () {		
+    var table = document.getElementById('workHoursTable'); 		
+    var wb = XLSX.utils.table_to_book(table, {sheet: "Sheet1"});		
+    var wbout = XLSX.write(wb, {bookType: 'xlsx', type: 'binary'});		
+		
+    function s2ab(s) { 		
+        var buf = new ArrayBuffer(s.length);		
+        var view = new Uint8Array(buf);		
+        for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;		
+        return buf;    		
+    }		
+		
+    // تنزيل ملف Excel		
+    var downloadLink = document.createElement('a');		
+    downloadLink.href = URL.createObjectURL(new Blob([s2ab(wbout)], {type: "application/octet-stream"}));		
+    downloadLink.download = 'pointage F20.xlsx';		
+    downloadLink.click();		
+});		
 
-    // تنزيل ملف Excel
-    var downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(new Blob([s2ab(wbout)], {type: "application/octet-stream"}));
-    downloadLink.download = 'pointage F20.xlsx';
-    downloadLink.click();
-});
 	  function RENDEMENT() {
-      window.location.href = 'https://aromaherbex.github.io/R20/'; 
+      window.location.href = 'https://aromaherbex.github.io/R19/'; 
     }
 	  // Open the modal
     function openModal() {
@@ -554,7 +556,7 @@ body {
             phoneNumbers.push("+212663715065"); // Numéro de téléphone pour la personne 2
         }
 
-        var fullMessage = FINCA :  *${finca}*\n DATE :  *${date}*\n  le nombre d'heures est correct\n  OBSERVATION :*(${message})*`;
+        var fullMessage = `Concernant la Ferme: ${finca} le: ${date} , le nombre d'heures est correct (${message})`;
 
         if (phoneNumbers.length > 0) {
             for (var i = 0; i < phoneNumbers.length; i++) {
