@@ -516,7 +516,7 @@ body {
     var table = document.getElementById('workHoursTable');
     
     // الحصول على القيمة من الخلية في العمود 6 من الصف الأول
-    var fileName = table.rows[4].cells[5].innerText || 'default_name';  // استخدم الصف 0 والعمود 5 (بما أن العد يبدأ من 0)
+    var fileName = table.rows[1].cells[5].innerText || 'default_name';  
 
     // إنشاء الكتاب
     var wb = XLSX.utils.table_to_book(table, {sheet: "POINTAGE F20"});
@@ -534,7 +534,7 @@ body {
     var url = URL.createObjectURL(blob);
     var downloadLink = document.createElement('a');
     downloadLink.href = url;
-    downloadLink.download = fileName + '.xlsx';  // تعيين اسم الملف بناءً على القيمة من الخلية
+    downloadLink.download = fileName + '.xlsx';  
     document.body.appendChild(downloadLink);
     downloadLink.click();
     document.body.removeChild(downloadLink);
