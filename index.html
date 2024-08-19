@@ -516,7 +516,7 @@ body {
     var table = document.getElementById('workHoursTable');
     
     // الحصول على القيمة من الخلية في العمود 6 من الصف الأول
-    var fileName = table.rows[1].cells[5].innerText || 'default_name';  
+    var fileName = table.rows[2].cells[5].innerText || 'default_name';  
 
     // إنشاء الكتاب
     var wb = XLSX.utils.table_to_book(table, {sheet: "POINTAGE F20"});
