@@ -475,26 +475,10 @@ body {
       <span class="close" onclick="closeModal()">&times;</span>
       <h2>Envoyer des informations</h2>
       <form id="modalForm">
-          <label for="fincaModal">FINCA :</label>
-          <select id="fincaModal" name="finca" required>
-              <option value="">Sélectionner une option</option>
-              <option value="F01">F01</option>
-              <option value="F02">F02</option>
-              <option value="F03">F03</option>
-              <option value="F04">F04</option>
-              <option value="F05">F05</option>
-              <option value="F06">F06</option>
-              <option value="F08">F08</option>
-              <option value="F09">F09</option>
-              <option value="F13">F13</option>
-              <option value="F19">F19</option>
-              <option value="F20">F20</option>
-              <option value="F21">F21</option>
-              <option value="F22">F22</option>
-          </select>
-
+          <label for="dateModal">FINCA :</label>
+          <input type="text" id="finca11" readonly/>
           <label for="dateModal">DATE :</label>
-          <input type="date" id="dateModal" name="date" required>
+          <input type="text" id="date11" readonly>
           <label for="dateModal">TOTAL H :</label>
           <input type="text" id="heur" readonly/>
           <label for="dateModal">NOMBRE DE PRS :</label>
@@ -560,8 +544,8 @@ body {
 
     // Send message via WhatsApp
     function sendToWhatsApp() {
-        var finca = document.getElementById("fincaModal").value;
-        var date = document.getElementById("dateModal").value;
+        var finca11 = document.getElementById("finca11").value;
+        var date11 = document.getElementById("date11").value;
         var message = document.getElementById("messageModal").value;
         var prs = document.getElementById("prs").value;
         var heur = document.getElementById("heur").value;
@@ -574,7 +558,7 @@ body {
             phoneNumbers.push("+212663715065"); // Numéro de téléphone pour la personne 2
         }
 
-        var fullMessage = `FINCA : *${finca}*\n\nDATE : *${date}*\n\nTOTAL H :*${heur}*\n\nNOMBRE DE PRS : *${prs}* \n\nle nombre d'heures est correct\n\n*(${message})*`;
+        var fullMessage = `FINCA : *${finca11}*\n\nDATE : *${date11}*\n\nTOTAL H :*${heur}*\n\nNOMBRE DE PRS : *${prs}* \n\nle nombre d'heures est correct\n\n*(${message})*`;
 
         if (phoneNumbers.length > 0) {
             for (var i = 0; i < phoneNumbers.length; i++) {
@@ -662,14 +646,23 @@ updateDataSummary(totalHours4, totalHours5);
     }
 
     function updateDataSummary(totalHours4, totalHours5) {
+      var table = document.getElementById('workHoursTable');
+    
+    // الحصول على القيمة من الخلية في العمود 6 من الصف الأول
+      var finca1 = table.rows[3].cells[4].innerText;
+      var date1 = table.rows[3].cells[5].innerText;
 
       const dataSummary = document.getElementById('dataSummary');
       const heur = document.getElementById('heur');
       const prs = document.getElementById('prs');
+      const finca11=document.getElementById('finca11');
+      const date11=document.getElementById('date11');
 
       dataSummary.textContent = `Total H: ${totalHours4} H * Pointage: ${totalHours5} PRS`;
       heur.value = `${totalHours4} H`;
       prs.value = `${totalHours5} PRS`;
+      finca11.value = `${finca1}`;
+      date11.value = `${date1}`;
       window.onload=updateDataSummary;
 
     }
