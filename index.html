@@ -486,8 +486,50 @@ th {
       </form>
   </div>
 </div>
+<div id="myModal333" class="Modal333">
+    <div class="Modal333-content">
+        <span class="close">&times;</span>
+        <p id="Modal333-title"></p>
+        <input type="password" id="password" placeholder="Enter your password">
+        <button onclick="submitPassword()">Submit</button>
+    </div>
+</div>
 <script>
+     let correctPassword = '';
+     
+    let redirectUrl = '';
 
+    // Function to open the Modal333
+    function openModal333(fincaName, url, password) {
+        document.getElementById('myModal333').style.display = 'flex';
+        document.getElementById('Modal333-title').innerText = fincaName;
+        correctPassword = password;
+        redirectUrl = url;
+    }
+
+    // Close the Modal333 when the close button is clicked
+    document.querySelector('.close').onclick = function() {
+        document.getElementById('myModal333').style.display = 'none';
+    };
+
+    // Function to submit the password
+    function submitPassword() {
+        const enteredPassword = document.getElementById('password').value;
+
+        if (enteredPassword === correctPassword) {
+            window.location.href = redirectUrl;
+        } else {
+            alert('Incorrect password!');
+        }
+    }
+
+    // Close the Modal333 when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('myModal333')) {
+            document.getElementById('myModal333').style.display = 'none';
+        }
+    };
+    
 
     // URL of the Google Apps Script web app
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxKTqKvLcej8bGQKraPJf0xgXRTXJVPZuCLzQILPc1XqERSH08ThtKckEmclCANa40/exec';
@@ -728,40 +770,7 @@ th {
     URL.revokeObjectURL(url);
 });
 
-let correctPassword = '';
-    let redirectUrl = '';
 
-    // Function to open the Modal333
-    function openModal333(fincaName, url, password) {
-        document.getElementById('myModal333').style.display = 'flex';
-        document.getElementById('Modal333-title').innerText = fincaName;
-        correctPassword = password;
-        redirectUrl = url;
-    }
-
-    // Close the Modal333 when the close button is clicked
-    document.querySelector('.close').onclick = function() {
-        document.getElementById('myModal333').style.display = 'none';
-    };
-
-    // Function to submit the password
-    function submitPassword() {
-        const enteredPassword = document.getElementById('password').value;
-
-        if (enteredPassword === correctPassword) {
-            window.location.href = redirectUrl;
-        } else {
-            alert('Incorrect password!');
-        }
-    }
-
-    // Close the Modal333 when clicking outside of it
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('myModal333')) {
-            document.getElementById('myModal333').style.display = 'none';
-        }
-    };
-    
 </script>
 
 </body>
