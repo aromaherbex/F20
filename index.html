@@ -512,8 +512,23 @@ th {
                     // If this is column 6 and its value is not 0, add the Edit button
                     if (index === 3 && parseInt(row[key], 10) > 0) {
                         const editButton = document.createElement("button");
-                        editButton.textContent = "";
+                        editButton.className = 'icon-button';
+                        editButton.innerHTML = '<i class="fas fa-edit"></i>';
                         editButton.classList.add("edit-btn");
+                        editButton.style.background = 'none';
+                        editButton.style.border = 'none';
+                        editButton.style.fontSize = '24px';
+                         editButton.style.cursor = 'pointer';
+                        editButton.style.color = '#004d40';  // Example color
+
+// Add hover effect using JavaScript (not recommended for complex styles)
+                        editButton.addEventListener('mouseover', () => {
+                        editButton.style.color = '#00796b';  // Hover color
+                       });
+                        editButton.addEventListener('mouseout', () => {
+                        editButton.style.color = '#004d40';  // Original color
+                        });
+
                         editButton.onclick = function() {
                             const cell1Value = newRow.cells[0].textContent.trim();
                             const cell2Value = newRow.cells[5].textContent.trim();
