@@ -25,7 +25,7 @@ header {
 
 .container {
     max-width: 1600px;
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: white;
     border-radius: 12px;
@@ -113,87 +113,7 @@ th {
     margin-right: 0;
 }
 
-/* Style the dropdown button */
-.dropbtn {
-    background-color: #041965;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-/* Dropdown container */
-.dropdown {
-    position: fixed;
-    display: inline-block;
-}
-
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: #000000;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Nested dropdown container */
-.nested-dropdown {
-    position: relative;
-}
-
-/* Nested dropdown button */
-
-
-/* Nested dropdown content (hidden by default) */
-.nested-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #ffffff;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
-}
-.nested-dropbtn {
-    background-color: #00796b;
-    color: white;
-    padding: 10px;
-    font-size: 14px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-/* Show the nested dropdown content on hover */
-.nested-dropdown:hover .nested-dropdown-content {
-    display: block;
-}
-
-/* Links inside the nested dropdown */
-.nested-dropdown-content a {
-    color: #000000;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
 
 /* Change color of nested dropdown links on hover */
 .nested-dropdown-content a:hover {background-color: #ddd;}
@@ -338,6 +258,124 @@ th {
     #downloadBtn:hover {
         background-color: #0056b3; /* لون الخلفية عند التمرير */
     }
+
+    
+    nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #00796b;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Center the menu */
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        nav ul li a:hover {
+            background: #004d40;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #004d40;
+            min-width: 200px;
+            z-index: 1000;
+        }
+
+        nav ul ul li {
+            float: none;
+            border-top: 1px solid #555;
+        }
+
+        nav ul ul li a {
+            padding: 10px;
+            color: white;
+        }
+
+        nav ul ul ul {
+            left: 100%;
+            top: 0;
+        }
+
+        nav ul li:hover > ul {
+            display: block;
+        }
+
+        
+        /* Modal333 styling */
+        .Modal333 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .Modal333-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .Modal333 input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+            
+        }
+
+        .Modal333 button {
+            padding: 10px 20px;
+            background-color: #004d40;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
     
     </style>
 </head>
@@ -345,32 +383,51 @@ th {
   <button id="downloadBtn">
     &#128190; <!-- رمز القرص الصلب، يمكنك تغييره حسب رغبتك -->
 </button>
-    <div class="dropdown">
-        <button class="dropbtn">MENU</button>
-        <div class="dropdown-content" id="dayDropdown">
-            <a href="#"></a>
-            <a href="#">Pointage manuel</a>
-            <a href="https://193.56.164.133:8443/reportes/Reporte/?key=Partes_Rendimientos">Rendement</a>
-            <a href="https://193.56.164.133:8443/reportes/Reporte/?key=Marcheting">Rendement de tracteur</a>
-            <a href="https://193.56.164.133:8443/ControlRoute/task/">Access Taches</a>
-            <a href="https://193.56.164.133:8443/Tareo/productivity_log/">productivite</a>
-            <a href="https://193.56.164.133:8443/Tareo/machinerymarking/">Modifier rnd tracteur</a>
-            <div class="nested-dropdown">
-      
-                <option class="nested-dropbtn">JOUR   >></option>
-                <div class="nested-dropdown-content">
-                    <a href="https://aromaherbex.github.io/LUNDI/">LUNDI</a>
-                    <a href="https://aromaherbex.github.io/MARDI/">MARDI</a>
-                    <a href="https://aromaherbex.github.io/MERCREDI/">MERCREDI</a>
-                    <a href="https://aromaherbex.github.io/JEUDI/">JEUDI</a>
-                    <a href="https://aromaherbex.github.io/VENDREDI/">VENDREDI</a>
-                    <a href="https://aromaherbex.github.io/SAMEDI/">SAMEDI</a>
-                    <a href="https://aromaherbex.github.io/DIMANCHE/">DIMANCHE</a>
-                </div>
-            </div>
-        </div>
-      </div>
-     
+<nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Descuadrage</a>
+            <ul>
+                <li><a href="https://aromaherbex.github.io/LUNDI/">LUNDI</a></li>
+                <li><a href="https://aromaherbex.github.io/MARDI/">MARDI</a></li>
+                <li><a href="https://aromaherbex.github.io/MERCREDI/">MERCEREDI</a></li>
+                <li><a href="https://aromaherbex.github.io/JEUDI/">JEUDI</a></li>
+                <li><a href="https://aromaherbex.github.io/VENDREDI/">VENDREDI</a></li>
+                <li><a href="https://aromaherbex.github.io/SAMEDI/">SAMEDI</a></li>
+                <li><a href="https://aromaherbex.github.io/DIMANCHE/">DRMANCHE</a></li>
+                
+            </ul>
+        </li>
+        <li><a href="#">Pointage manuel</a>
+            <ul>
+                <li><a href="#" onclick="openModal333('FINCA 01', 'https://aromaherbex.github.io/F1/', 'd1')">FINCA 01</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 02', 'https://aromaherbex.github.io/F2/', 'd2')">FINCA 02</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 03', 'https://aromaherbex.github.io/F3/', 'd3')">FINCA 03</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 04', 'https://aromaherbex.github.io/F4/', 'd4')">FINCA 04</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 05', 'https://aromaherbex.github.io/F5/', 'd5')">FINCA 05</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 06', 'https://aromaherbex.github.io/F6/', 'd6')">FINCA 06</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 08', 'https://aromaherbex.github.io/F8/', 'd8')">FINCA 08</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 09', 'https://aromaherbex.github.io/F9/', 'd9')">FINCA 09</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 13', 'https://aromaherbex.github.io/F13/', 'd13')">FINCA 13</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 19', 'https://aromaherbex.github.io/F19/', 'd19')">FINCA 19</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 20', 'https://aromaherbex.github.io/F20/', 'd20')">FINCA 20</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 21', 'https://aromaherbex.github.io/F21/', 'd21')">FINCA 21</a></li>
+                <li><a href="#" onclick="openModal333('FINCA 21', 'https://aromaherbex.github.io/F22/', 'd22')">FINCA 22</a></li>
+                
+            </ul>
+        </li>
+        <li><a href="https://193.56.164.133:8443/reportes/Reporte/?key=Partes_Rendimientos">Rendement</a></li>
+        <li><a href="https://193.56.164.133:8443/reportes/Reporte/?key=Marcheting">Rendement de tracteur</a></li>
+        <li><a href="https://193.56.164.133:8443/ControlRoute/task/">Access Taches</a></li>
+        <li><a href="https://193.56.164.133:8443/Tareo/productivity_log/">productivite</a></li>
+        <li><a href="https://193.56.164.133:8443/Tareo/machinerymarking/">Modifier rnd tracteur</a></li>
+        
+        
+    </ul>
+</nav>
+
+
+ 
 <div class="container">
    
 <div class="totals">
@@ -670,6 +727,41 @@ th {
     document.body.removeChild(downloadLink);
     URL.revokeObjectURL(url);
 });
+
+let correctPassword = '';
+    let redirectUrl = '';
+
+    // Function to open the Modal333
+    function openModal333(fincaName, url, password) {
+        document.getElementById('myModal333').style.display = 'flex';
+        document.getElementById('Modal333-title').innerText = fincaName;
+        correctPassword = password;
+        redirectUrl = url;
+    }
+
+    // Close the Modal333 when the close button is clicked
+    document.querySelector('.close').onclick = function() {
+        document.getElementById('myModal333').style.display = 'none';
+    };
+
+    // Function to submit the password
+    function submitPassword() {
+        const enteredPassword = document.getElementById('password').value;
+
+        if (enteredPassword === correctPassword) {
+            window.location.href = redirectUrl;
+        } else {
+            alert('Incorrect password!');
+        }
+    }
+
+    // Close the Modal333 when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('myModal333')) {
+            document.getElementById('myModal333').style.display = 'none';
+        }
+    };
+    
 </script>
 
 </body>
