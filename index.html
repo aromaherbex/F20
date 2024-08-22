@@ -512,7 +512,7 @@ th {
                     // If this is column 6 and its value is not 0, add the Edit button
                     if (index === 3 && parseInt(row[key], 10) > 0) {
                         const editButton = document.createElement("button");
-                        editButton.textContent = "Modifier";
+                        editButton.textContent = "";
                         editButton.classList.add("edit-btn");
                         editButton.onclick = function() {
                             const cell1Value = newRow.cells[0].textContent.trim();
