@@ -537,7 +537,7 @@ th {
     // Function to format date to YYYY-MM-DD
     function formatDate(dateString) {
         const dateObj = new Date(dateString);
-        const day = dateObj.getDate()+1;
+        const day = dateObj.getDate();
         const month = String(dateObj.getMonth() + 1).padStart(2, '0');
         const year = dateObj.getFullYear();
         return `${year}-${month}-${day}`;
