@@ -488,13 +488,16 @@ th {
 </div>
 <div id="myModal333" class="Modal333">
     <div class="Modal333-content">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeModal333()">&times;</span>
         <p id="Modal333-title"></p>
         <input type="password" id="password" placeholder="Enter your password">
         <button onclick="submitPassword()">Submit</button>
     </div>
 </div>
 <script>
+     function closeModal333() {
+        document.getElementById("myModal333").style.display = "none";
+    }
      let correctPassword = '';
      
     let redirectUrl = '';
@@ -508,9 +511,7 @@ th {
     }
 
     // Close the Modal333 when the close button is clicked
-    document.querySelector('.close').onclick = function() {
-        document.getElementById('myModal333').style.display = 'none';
-    };
+    
 
     // Function to submit the password
     function submitPassword() {
@@ -705,6 +706,7 @@ th {
     function closeModal() {
         document.getElementById("myModal").style.display = "none";
     }
+	
 
     // Send message via WhatsApp
     function sendToWhatsApp() {
