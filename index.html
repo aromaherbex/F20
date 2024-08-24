@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <title>POINTAGE</title>
@@ -13,6 +13,7 @@
     margin: 0;
     padding: 0;
 }
+
 
 header {
     background-color: #004d40;
@@ -36,6 +37,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    border-radius: 20px;
 }
 
 th, td {
@@ -49,6 +51,8 @@ th {
     color: white;
 }
 
+
+
 .highlight {
     background-color: #862f3c; /* Light red background */
     color: #f3f3f3; /* Dark red text color */
@@ -58,11 +62,11 @@ th {
     background-color: #00796b;
     color: white;
     border: none;
-    padding: 8px 14px;
+    padding: 2px 4px;
     cursor: pointer;
     border-radius: 6px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-left: 40px;
+    margin-left: 10px;
 }
 
 .edit-btn:hover {
@@ -85,7 +89,7 @@ th {
 }
 
 .totals {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 10px 20px;
     background: linear-gradient(to right, #004d40, #00796b);
     color: white;
@@ -376,7 +380,12 @@ th {
             cursor: pointer;
             border-radius: 10px;
         }
-    
+        td:nth-child(7), th:nth-child(7) {
+            width: 0px; /* يمكنك تعديل القيمة بحسب العرض المطلوب */
+        }
+
+        
+        
     </style>
 </head>
 <body>
@@ -439,7 +448,7 @@ th {
 <table id="dataTable">
     <thead>
         <tr>
-            <th><input type="text" class="filter-input" placeholder="MATRICULE"></th>
+            <th id="2027"><input type="text" class="filter-input" placeholder="MATRICULE"></th>
             <th><input type="text" class="filter-input" placeholder="NOMBRE"></th>
             <th><input type="text" class="filter-input" placeholder="EQUIPE"></th>
             <th><input type="text" class="filter-input" placeholder="AGROTAREO"></th>
@@ -495,6 +504,7 @@ th {
     </div>
 </div>
 <script>
+
      function closeModal333() {
         document.getElementById("myModal333").style.display = "none";
     }
@@ -533,7 +543,7 @@ th {
     
 
     // URL of the Google Apps Script web app
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKTqKvLcej8bGQKraPJf0xgXRTXJVPZuCLzQILPc1XqERSH08ThtKckEmclCANa40/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx2Lxi1IFXN_OMq7gPomXOijAarUakEzfLX7fBjuZDDHUlIx288RVEzYgWYmHVPYr_S/exec';
 
     // Function to format date to YYYY-MM-DD
     function formatDate(dateString) {
@@ -603,9 +613,11 @@ th {
                     if (index === 5) { 
                         cellValue = formatDate(cellValue);
                     }
-
+                    
                     cell.textContent = cellValue;
-
+                    
+                    
+                    
                     // Apply red color if value in column 6 is not zero
                     
 
@@ -617,8 +629,9 @@ th {
                         editButton.classList.add("edit-btn");
                         editButton.style.background = 'none';
                         editButton.style.border = 'none';
-                        editButton.style.fontSize = '20px';
-                         editButton.style.cursor = 'pointer';
+                        editButton.style.fontSize = '15px';
+                        editButton.style.margin = '5px';
+                        editButton.style.cursor = 'pointer';
                         editButton.style.color = '#004d40';  // Example color
 
 // Add hover effect using JavaScript (not recommended for complex styles)
@@ -628,6 +641,24 @@ th {
                         editButton.addEventListener('mouseout', () => {
                         editButton.style.color = '#004d40';  // Original color
                         });
+                        const editButton1 = document.createElement("button");
+                        editButton1.className = 'icon-button';
+                        editButton1.innerHTML = '<i class="fa fa-edit"></i>';
+                        editButton1.classList.add("edit-btn");
+                        editButton1.style.background = 'none';
+                        editButton1.style.border = 'none';
+                        editButton1.style.fontSize = '15px';
+                        editButton1.style.cursor = 'pointer';
+                        editButton1.style.margin = '5px';
+                        editButton1.style.color = '#004d40';  // Example color
+
+// Add hover effect using JavaScript (not recommended for complex styles)
+                        editButton1.addEventListener('mouseover', () => {
+                        editButton1.style.color = '#00796b';  // Hover color
+                       });
+                        editButton1.addEventListener('mouseout', () => {
+                        editButton1.style.color = '#004d40';  // Original color
+                        });
 
                         editButton.onclick = function() {
                             const cell1Value = newRow.cells[0].textContent.trim();
@@ -636,6 +667,14 @@ th {
                             window.location.href = url;
                         };
                         cell.appendChild(editButton);
+                        editButton1.onclick = function() {
+                            const cell1Value = newRow.cells[0].textContent.trim();
+                            const cell2Value = newRow.cells[5].textContent.trim();
+                            const cell3Value = newRow.cells[6].textContent.trim();
+                            const url = `https://193.56.164.133:8443/ControlRoute/task/${encodeURIComponent(cell3Value)}/change/`;
+                            window.location.href = url;
+                        };
+                        cell.appendChild(editButton1);
                     }
                 });
             });
