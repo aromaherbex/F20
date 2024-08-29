@@ -449,16 +449,16 @@ th {
 <table id="dataTable">
     <thead>
         <tr>
-            <th id="2027"><input type="text" class="filter-input" placeholder="MATRICULE"></th>
+            <th id="2027"><input type="number" class="filter-input" placeholder="MATRICULE"></th>
             <th><input type="text" class="filter-input" placeholder="NOMBRE"></th>
             <th><input type="text" class="filter-input" placeholder="EQUIPE"></th>
-            <th><input type="text" class="filter-input" placeholder="AGROTAREO"></th>
+            <th><input type="number" class="filter-input" placeholder="AGROTAREO"></th>
             <th><input type="text" class="filter-input" placeholder="FINCA"></th>
             <th>
                 <input type="text" class="filter-input" placeholder="DATE">
                 
             </th>
-            
+            <th><input type="number" class="filter-input" placeholder="FINCA"></th>
         </tr>
     </thead>
     <tbody>
@@ -618,6 +618,10 @@ th {
                     cell.textContent = cellValue;
                     
                     
+                    if (index === 6) { 
+                        
+                        cell.style.width='1%';
+                    }
                     
                     // Apply red color if value in column 6 is not zero
                     
